@@ -115,3 +115,6 @@ export SDKMAN_DIR="/home/tianshi/.sdkman"
 [[ -s "/home/tianshi/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tianshi/.sdkman/bin/sdkman-init.sh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

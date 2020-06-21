@@ -36,5 +36,10 @@ VERSION=v12.16.3
 DISTRO=linux-x64
 export PATH=/home/tianshi/bin/nodejs/node-v12.16.3-linux-x64/bin:$PATH
 
+# config path
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # the fuck
 eval $(thefuck --alias)
+# add home brew
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
