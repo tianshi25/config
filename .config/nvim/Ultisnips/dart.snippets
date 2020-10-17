@@ -3,38 +3,6 @@ width: ${1},
 height: ${0},
 endsnippet
 
-snippet pa "Padding"
-padding: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}, }${5:top: ${6:0}, }${7:bottom: ${8:0}}),
-endsnippet
-
-snippet paa "Padding All"
-pagging: EdgeInsets.all(${1:8.0}),
-endsnippet
-
-snippet pah "Padding Horizontal"
-padding: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}}),
-endsnippet
-
-snippet pav "Padding Vertical"
-padding: EdgeInsets.only(${1:top: ${2:0}, }${3:bottom: ${4:0}}),
-endsnippet
-
-snippet mar "Margin"
-margin: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}, }${5:top: ${6:0}, }${7:bottom: ${8:0}}),
-endsnippet
-
-snippet mara "Margin All"
-margin: EdgeInsets.all(${1:8.0}),
-endsnippet
-
-snippet marh "Margin Horizontal"
-margin: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}}),
-endsnippet
-
-snippet marv "Margin Vertical"
-margin: EdgeInsets.only(${1:top: ${2:0}, }${3:bottom: ${4:0}}),
-endsnippet
-
 snippet br "BorderRadius"
 borderRadius: BorderRadius.all(Radius.circular(${0})),
 endsnippet
@@ -118,14 +86,6 @@ snippet ts "Text with text style"
 Text(${1}, style: ${2}),${0}
 endsnippet
 
-snippet ss "TextStyle"
-TextStyle(
-  color: ${1},
-  fontSize: ${2},
-  fontWeight: w[${3}],
-),${0}
-endsnippet
-
 snippet sw "SizedBox with width"
 SizedBox(width: ${1}),${0}
 endsnippet
@@ -138,111 +98,91 @@ snippet swh "SizedBox with width and height"
 SizedBox(width: ${1}, height: ${2}),${0}
 endsnippet
 
-snippet scaf "Scaffold"
-Scaffold(
-  appBar: AppBar(
-    title: Text('${1:Title}'),
-  ),
-  body: ${2:Container()}${0},
-);
-endsnippet
-
-snippet sf "New Stateful Widget" b
-class ${1:name} extends StatefulWidget {
-  ${1:name}({});
+snippet nw "New Widget" b
+class ${1} extends StatefulWidget {
   @override
-  _${1:WidgetName}State createState() => _${1:WidgetName}State();
-}
-class _${1:index}State extends State<${1:index}> {
-  @override
-  Widget build(BuildContext context) {
-    return ${2:Container()};
+  createState() {
+    return _`!p
+snip.rv = t[1]
+`State();
   }
 }
+
+class _`!p
+snip.rv = t[1]
+`State extends State<`!p
+snip.rv = t[1]
+`> {
+  @override
+  Widget build(BuildContext context) {
+    return ${0:${VISUAL}};
+  }
+}
+
 endsnippet
 
 
-snippet sl "New Stateless Widget" b
-class ${1:name} extends StatelessWidget {
-  ${1:name}({});
+snippet nwp "New Widget With Parameters" b
+class ${1} extends StatefulWidget {
+  final ${2};
+  `!p
+snip.rv = t[1]
+`({`!p
+snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
+`});
+
   @override
-  Widget build(BuildContext context) {
-    return ${2:Container()};
+  createState() {
+    return _`!p
+snip.rv = t[1]
+`State(`!p
+snip.rv=", ".join([x.strip() + ": " + x.strip() for x in t[2].split(',')])
+`);
   }
 }
+
+class _`!p
+snip.rv = t[1]
+`State extends State<`!p
+snip.rv = t[1]
+`> {
+  // Copy and paste parameters when finished
+  _`!p
+snip.rv = t[1]
+`State({`!p
+snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
+`});
+  @override
+  Widget build(BuildContext context) {
+    return ${0:${VISUAL}};
+  }
+}
+
+endsnippet
+
+
+snippet slp "New Stateless Widget With Parameters" b
+class ${1} extends StatelessWidget {
+  final ${2};
+  `!p
+snip.rv = t[1]
+`({`!p
+snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
+`});
+  @override
+  Widget build(BuildContext context) {
+    return ${0:${VISUAL}};
+  }
+}
+
+endsnippet
+
+snippet this "this.{} = {};"
+this.${1} = `!p
+snip.rv = t[1]
+`;
 endsnippet
 
 snippet wt "Colors.white"
-color: colorWhite,
-endsnippet
-
-snippet inits "initState"
-@override
-void initState() {
-  super.initState();
-  ${0}
-}
-endsnippet
-
-snippet dispose "dispose"
-@override
-void initState() {
-  super.initState();
-  ${0:}
-}
-endsnippet
-
-snippet listv "ListView.builder"
-ListView.builder(
-  itemCount: ${1:1},
-  itemBuilder: (BuildContext context, int index) {
-    return ${2:Container()};
-  },
-)
-endsnippet
-
-snippet future "Future Builder"
-FutureBuilder(
-  future: ${1:Future},
-  initialData: ${2:InitialData},
-  builder: (BuildContext context, AsyncSnapshot snapshot) {
-    if (snapshot.connectionState == ConnectionState.done)
-      return ${3:Container();}
-    return ${4:Container();}
-  },
-)
-endsnippet
-
-snippet stream "Stream Builder"
-StreamBuilder<${1:dynamic}>(
-  stream: ${2:yourStream},
-  builder: (context, snapshot) {
-    if (snapshot.hasData) {
-      // TODO: do something with the data
-      return ${3:Container()};
-    } else if (snapshot.hasError) {
-      // TODO: do something with the error
-      return ${4:Text(snapshot.error.toString())};
-    }
-    // TODO: the data is not ready, show a loading indicator
-    return ${5:Center(child: CircularProgressIndicator())};
-  },
-),
-endsnippet
-
-snippet try "try catch"
-try {
-} catch (e) {
-}${0}
-endsnippet
-
-snippet for "standard for loop without brackets"
-for (var ${1:i} = 0; ${1:i} < ${2:n}; ++${1:i})
-  ${3:// TODO}
-endsnippet
-
-snippet forr "standard for loop"
-for (var ${1:i} = 0; ${1:i} < ${2:n}; ++${1:i}) {
-  ${3:// TODO}
-}
+color: Colors.white,
 endsnippet
